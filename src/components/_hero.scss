@@ -1,0 +1,34 @@
+.hero {
+  @include flex(row, nowrap, center, center);
+  min-height: 400px;
+  background-color: get-color("dark-1");
+  box-shadow: $bs-1;
+  background-image: url("https://www.transparenttextures.com/patterns/random-grey-variations.png");
+}
+.hero__wrapper {
+  padding: $s-3;
+  max-width: 900px;
+  margin: 0 auto;
+  @include flex(column-reverse, nowrap, center, center);
+  gap: $s-3;
+  @include bp($bp-md) {
+    @include flex(row, nowrap, center, flex-start);
+    gap: 3rem;
+  }
+}
+.hero__details {
+  max-width: 350px;
+  & > * {
+    margin-bottom: $s-3;
+  }
+  h1 {
+    color: get-color("light-blue")
+  }
+  p {
+    color: white;
+  }
+  @include bp($bp-md) {
+    flex: 1;
+    max-width: 100%;
+  }
+}

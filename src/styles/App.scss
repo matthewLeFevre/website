@@ -1,0 +1,293 @@
+@import "./sass-defaults-main/index";
+@import "../components/hero";
+
+.app-container {
+  background-color: get-color("dark-1");
+}
+
+.app-header {
+  height: 70px;
+  background-color: get-color("dark-1");
+  box-shadow: $bs-1;
+  @include flex(row, nowrap, space-between, center);
+  padding: 0 $s-3;
+  position: sticky;
+  top: 0;
+  @include bp($bp-xl) {
+    padding:0 calc(50vw - 700px);
+  }
+}
+.app-header__title {
+  @include flex(row, nowrap, flex-start, center);
+  color: get-color("light-blue");
+  font-size: $txt-lg;
+
+  & img {
+    height: 28px;
+    width: 28px;
+    margin-right: $s-2;
+  }
+
+  @include bp($bp-lg) {
+    font-size: $txt-2x;
+
+    & img {
+      height: 35px;
+      width: 35px;
+      margin-right: $s-3;
+    }
+  }
+}
+
+.nav {
+  @include transition(width, 200ms);
+  background-color: get-color("dark-2");
+  border-radius: $br-sm 0 0 $br-sm;
+  box-shadow: $bs-1;
+  @include bp($bp-lg) {
+    height: auto !important;
+    width: auto !important;
+    position: static !important;
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
+.nav--open {
+  @extend .nav;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 85vw;
+}
+.nav--closed {
+  @extend .nav;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+.nav__btn {
+  @include transition;
+  background-color: transparent;
+  color: get-color("light-blue");
+  border: 3px solid get-color("blue");
+  border-radius: $br-sm;
+  padding: $s-1 $s-3;
+  font-weight: bold;
+  @include bp($bp-lg) {
+    display: none;
+  }
+}
+.nav__btn--open {
+  @extend .nav__btn;
+  background-color: get-color("blue");
+  color: get-color("dark-1")
+}
+.nav__btn--closed {
+  @extend .nav__btn;
+}
+.nav__header {
+  padding: $s-3;
+  @include flex(row, nowrap, space-between, center);
+  @include bp($bp-lg) {
+    display: none;
+  }
+}
+.nav__header__title {
+  @include flex(row, nowrap, flex-start, center);
+  & img {
+    height: 30px;
+    width: 30px;
+  }
+  & span {
+    color: get-color("light-blue");
+    font-weight: bold;
+    font-size: $txt-lg;
+    margin-left: $s-3;
+  }
+}
+.nav__item-list {
+  list-style: none;
+  padding: $s-3;
+  margin: 0;
+  @include bp($bp-lg) {
+    @include flex(row, nowrap, center, center);
+    gap: $s-2;
+    padding: 0;
+  }
+}
+.nav__item {
+  color: white;
+  text-decoration: none;
+  padding: $s-2 $s-3;
+  display: block;
+  background-color: darken(get-color('dark-2'), 10%);
+  border-radius: $br-sm;
+  margin-bottom: $s-2;
+  @include bp($bp-lg) {
+    margin-bottom: 0;
+    font-weight: bold;
+    background-color: transparent;
+    font-size: $txt-lg;
+  }
+}
+.section {
+  padding: $s-3;
+  &:nth-child(even) {
+    background-color: get-color("dark-blue");
+    .section__title {
+      color: get-color("dark-1");
+    }
+  }
+}
+.section__content {
+  max-width: 900px;
+  min-height: 300px;
+  margin: 0 auto;
+}
+
+.section__title {
+  color: white;
+  font-size: $txt-2x;
+}
+
+.section__hook {
+  position: relative;
+  bottom: 100px;
+}
+
+a {
+  color: get-color("blue");
+  &:hover {
+    color: get-color("light-blue")
+  }
+}
+
+.btn {
+  background-color: get-color("blue");
+  padding: $s-2 $s-3;
+  border-radius: $br-sm;
+  color: get-color("dark-1") !important;
+  text-decoration: none;
+  box-shadow: $bs-1;
+  font-weight: bold;
+  &:hover {
+    background-color: get-color("light-blue");
+  }
+  margin-right: $s-3;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.btn--round--hover {
+  background-color: get-color("dark-2");
+  border-radius: 100%;
+  box-shadow: $bs-2;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  width: 50px;
+  height: 50px;
+  @include flex(row, nowrap, center, center)
+}
+
+.skill__box {
+  @include flex(column, nowrap, center, stretch);
+  gap: $s-3;
+  margin-top: $s-3;
+  @include bp($bp-lg) {
+    @include flex(row, nowrap, center, stretch);
+  }
+}
+.skill__card {
+  flex: 1;
+  padding: $s-3;
+  background-color: get-color("dark-1");
+  border-radius: $br-sm;
+  color: get-color("light-blue");
+  box-shadow: $bs-1;
+}
+.skill__badge {
+  margin-bottom: $s-2;
+  color: get-color("light-blue");
+}
+
+.skill__link {
+  margin-top: $s-3;
+  display: block;
+  color: get-color("dark-1");
+  font-weight: bold;
+}
+.project__explanation {
+  margin: $s-3 0;
+  & > * {
+    margin-top: $s-3;
+  }
+  color: white;
+  padding: $s-2;
+  border: 2px solid get-color("light-blue");
+  border-radius: $br-sm;
+}
+.project__explanation__summary {
+  font-weight: bold;
+  color: get-color("light-blue");
+  font-size: $txt-lg;
+  cursor: pointer;
+  margin: 0;
+}
+.project__cards {
+  margin-bottom: $s-3;
+  @include flex(column, nowrap, center, stretch);
+  gap: $s-3;
+
+  @include bp($bp-md) {
+    @include flex(row, nowrap, center, stretch);
+  }
+}
+.project__card {
+  flex: 1;
+  padding: $s-2;
+  border: 2px solid get-color("light-blue");
+  border-radius: $br-sm;
+
+  h3 {
+    color: get-color("light-blue");
+  }
+  span {
+    color: get-color("dark-blue");
+    margin-bottom: $s-3;
+    display: block;
+    font-size: $txt-xs;
+  }
+  p {
+    margin-bottom: $s-2;
+    color: white;
+    font-size: $txt-sm;
+  }
+  .project__card__links a {
+    padding: $s-2;
+    margin-right: $s-2;
+    border-radius: $br-sm;
+    &:hover {
+      background-color: get-color("dark-2");
+    }
+  }
+}
+
+.interest__card__group {
+  margin-top: $s-3;
+}
+.interest__card {}
+.interest__card__title {
+  margin-bottom: $s-2;
+}
+
+.footer {
+  padding: $s-3;
+  color: get-color("blue");
+}
